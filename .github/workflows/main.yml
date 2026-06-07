@@ -1,0 +1,20 @@
+name: action-test
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    hello-world-job:
+        name: A job to say hello
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Hello world action step
+              id: hello
+              uses: 1Pete3/hello-world-javascript-action@df0ee0e2d6b3077a581de934a32eaa82561a218c
+              with:
+                who-to-greet: Mona the Octocat
+        
+            - name: Get ouput time
+              run: echo "The time was ${{ steps.hello.outputs.time }}"
